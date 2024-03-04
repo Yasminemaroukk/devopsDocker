@@ -28,6 +28,24 @@ pipeline {
                 }
             }
         }
+        stage('Construction de l\'image Docker') {
+            steps {
+                script {
+                    dockerImage = docker.build("${registry}:${BUILD_NUMBER}")
+                }
+            }
+        }
+        stage('Push de l\'image vers le registre Docker') {
+            steps {
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+
+    }
         
 }
-}
+

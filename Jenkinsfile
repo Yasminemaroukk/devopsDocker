@@ -5,7 +5,7 @@ pipeline {
         pollSCM 'H/5 * * * *'
     }
       environment {
-      registry  = "yasminemarzouk/devops"
+      registry  = "houwayda/devop_esprit"
       registryCredential = 'dockerHub'
       dockerImage = ''
       }
@@ -15,7 +15,7 @@ pipeline {
         stage('Récupération du code source') {
             steps {
                 // Cette étape clone le référentiel Git
-                git 'https://github.com/Yasminemaroukk/devopsesprit'
+                git 'https://github.com/houwayda9/avec_maven'
             }
         }
  
@@ -46,6 +46,6 @@ pipeline {
         }
 
     }
-        
+   
 }
 
